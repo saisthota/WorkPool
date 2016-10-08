@@ -1,0 +1,25 @@
+{
+  "name": "workpool",
+  "version": "1.0.0",
+  "description": "Book UberPool at cheaper prices",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saisthota/WorkPool.git"
+  },
+  "keywords": [
+    "uber",
+    "pool",
+    "uber",
+    "taxi"
+  ],
+  "author": "Sai Sandeep Thota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/saisthota/WorkPool/issues"
+  },
+  "homepage": "https://github.com/saisthota/WorkPool#readme"
+}
