@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/saisthota/WorkPool.git"
+    "url": "git+https://github.com/saisthota/workPool.git"
   },
   "keywords": [
     "uber",
@@ -16,10 +16,18 @@
     "uber",
     "taxi"
   ],
-  "author": "Sai Sandeep Thota",
+  "author": "Sai Thota",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saisthota/WorkPool/issues"
+    "url": "https://github.com/saisthota/workPool/issues"
   },
-  "homepage": "https://github.com/saisthota/WorkPool#readme"
+  "homepage": "https://github.com/saisthota/workPool#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "forever": "^0.15.2",
+    "http": "0.0.0",
+    "request": "^2.75.0",
+    "request-promise": "^4.1.1",
+    "restify": "^4.1.1"
+  }
 }
