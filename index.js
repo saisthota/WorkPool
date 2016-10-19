@@ -1,7 +1,7 @@
 var rest = require('restify');
 var server = rest.createServer();
-var http = require('request');
-var promise = require('request-promise');
+var bluebird = require('bluebird');
+var rp = require('request-promise');
 
 var bodyParser = require('body-parser');
 server.use(bodyParser.json());
@@ -12,14 +12,47 @@ server.get('/estimates', function(req, res, next) {
     /*var params = "Start latlng / end latlng";
     var token = "SERVER-TOKEN-HERE"*/
 
-    var params = "start_latitude=37.351374&start_longitude=-121.992940&end_latitude=37.434650&end_longitude=-121.920546";
-    var token = "JaFBwmbHYOT2k0-bU4HNsFfBcEN00cfZhIevShBq"
+
 
     //https://api.uber.com/v1/estimates/time
 
+    var estimates = {
+        uri : "https://api.uber.com/v1/estimates/price?"+estimateParams,
+        headers: {"Authorization": "Token "+token}
+    };
+
+    var eta = {
+        uri: "https://api.uber.com/v1/estimates/time?"+etaParams,
+        headers: {"Authorization": "Token "+token}
+    };
+
+    var estReq = rp(estimates);
+    var etaReq = rp(eta);
+
+    rp(estimates)
+        .then(function(response) {
+            var est = JSON.parse(response);
+            rp(eta)
+                .then(function(timeResponse) {
+                    var eta = JSON.parse(timeResponse);
+
+                        console.log("Your uberPOOL ride is " + eta.times[0].estimate/60 + " mins away, Price: " + est.prices[0].estimate);
+
+                })
+        })
+
+
+
+
+
+
+
+
+
+/*
     http({
         url: "https://api.uber.com/v1/estimates/price?"+params,
-        headers: {"Authorization": "Token "+token}
+        headers:
     },
 
         function (error, response, body) {
@@ -37,7 +70,7 @@ server.get('/estimates', function(req, res, next) {
                 }
 
             }
-        })
+        })*/
 });
 
 server.listen(3000, function() {
