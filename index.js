@@ -31,8 +31,8 @@ server.get('/estimates', function(req, res, next) {
             rp(eta)
                 .then(function(timeResponse) {
                     var eta = JSON.parse(timeResponse);
-
-                        console.log("Your uberPOOL ride is " + eta.times[0].estimate/60 + " mins away, Price: " + est.prices[0].estimate);
+                        res.status(200).json({"time": eta.times[0].estimate/60, "price":est.prices[0].estimate});
+                        //console.log("Your uberPOOL ride is " + eta.times[0].estimate/60 + " mins away, Price: " + est.prices[0].estimate);
 
                 })
         })
